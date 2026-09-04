@@ -10,8 +10,7 @@ practise a few common web security techniques:
 5. Real-time client-side password complexity validation
 
 Front end is plain HTML/CSS/JavaScript; the back end is PHP with a MySQLi
-database connection. This is functionally the same project as the sibling
-`captcha` repo in this account, but ships with an actual SQL schema dump.
+database connection.
 
 This is a coursework/learning project, not production software.
 
@@ -24,7 +23,7 @@ This is a coursework/learning project, not production software.
   `js/jquery.passwordRequirements.js` plugin. Passwords are stored salted
   and hashed with SHA3-512 (random salt per user).
 - **Login** (`index.php` / `login_handle.php`): users log in with
-  email + password (no captcha on this page — reCAPTCHA is only used on
+  email + password (no captcha on this page; reCAPTCHA is only used on
   register and password-change). On success the app records the client's
   IP address and login time in the session, and forces a password change
   if the stored password is more than 30 days old.
@@ -42,9 +41,9 @@ This is a coursework/learning project, not production software.
 `cs_project.sql` in this repo is a phpMyAdmin dump of the `cs_project`
 database, containing:
 
-- `users` — `id`, `full_name`, `email`, `password` (SHA3-512 hex hash),
+- `users`: `id`, `full_name`, `email`, `password` (SHA3-512 hex hash),
   `salt`, `timestamp` (date of last password change).
-- `login` — `id`, `email`, `login_time`, `logout_time`, `ip`.
+- `login`: `id`, `email`, `login_time`, `logout_time`, `ip`.
 
 `dbconn.php` connects to this database as `root` with no password on
 `localhost`.
@@ -59,7 +58,7 @@ database, containing:
 4. If you want the reCAPTCHA to actually validate, replace the site key in
    `register.php`/`password.php` and the secret key in
    `register_handle.php` with your own keys from the Google reCAPTCHA
-   admin console — the ones committed here are the original author's test
+   admin console. The ones committed here are the original author's test
    keys and may not work.
 5. Serve the folder with PHP's built-in server, e.g. `php -S localhost:8000`
    from this directory, and open `http://localhost:8000/index.php`.
